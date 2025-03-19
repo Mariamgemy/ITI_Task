@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style (1).css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>User Information Collector</h2>
+
+
+        <form id="userForm">
+
+
+
+            <div class="form-group">
+                <label for="name">Name (alphabetic characters only):</label>
+                <input type="text" id="name" name="name">
+                <div class="error" id="nameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number (8 digits):</label>
+                <input type="text" id="phoneNumber" maxlength="8" name="phoneNumber">
+                <div class="error" id="phoneError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobileNumber">Mobile Number (11 digits, starting with 010, 011, or 012):</label>
+                <input type="text" id="mobileNumber" name="mobileNumber">
+                <div class="error" id="mobileError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="emailError"></div>
+            </div>
+
+            <button id="submitBtn"  type="button">Submit</button>
+            <button id="updateBtn" class="hidden"  type="button">Update</button>
+
+        </form>
+
+        <!-- Table to display user information -->
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="userTable">
+                <!-- User data will be appended here -->
+
+
+            </tbody>
+
+        </table>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

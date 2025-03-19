@@ -1,0 +1,54 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: rgb(252, 215, 215);
+}
+
+
+
+
+.tabs{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    box-shadow: 2px 3px 1px gray;
+}
+
+
+
+
+
+.users{
+    padding: 10px;
+    background-color: rosybrown;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+
+
+}
+.users:hover{
+    background-color: rgb(186, 56, 56);
+    box-shadow: 4px 6px 2px gray; 
+ 
+}
+.users::after{
+    background-color: rgb(186, 56, 56);
+}
+.postBody{
+    box-shadow: 2px 3px 2px gray ;
+    margin: 20px;
+
+  cursor: pointer;
+  text-align: center;
+  background-color: rgb(244, 243, 241);
+
+}
+.postBody:hover{
+  background-color: rgb(248, 243, 233);
+  border-radius: 10px;
+
+    box-shadow: 4px 6px 2px gray; 
+  
+}
+

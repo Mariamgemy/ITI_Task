@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--مش احسن حاجه بس مفيش وقت css استايل  -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+
+      
+      }
+
+      .media-player {
+        width: 300px;
+        height: 200px;
+        /* margin: auto; */
+        background-color: rgb(199, 199, 178);
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .album-art {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+
+      .controls {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+      .controls button:hover{
+        background-color: rgb(238, 200, 150);
+      }
+
+      .play,
+      .pause,
+      .stop,
+      .mute {
+        background-color: beige;
+        /* color: #fff; */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .song-list {
+        list-style: none;
+        padding-top: 100px;
+        margin: 5px;
+      }
+
+      .audio {
+        padding: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        display: block;
+        width: 400px;
+        background-color: bisque;
+      }
+
+      .audio:hover {
+        background-color: blanchedalmond;
+        box-shadow: 1px 2px 1px rgb(195, 195, 74);
+      }
+      #image {
+        width: 300px;
+        height: 250px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      
+      #volume {
+        width: 75px;
+      
+      }
+    </style>
+  </head>
+  <body>
+    <!-- اول حاجه  -->
+    <div class="media-player">
+      <img src="resources/1.jpg" id="image" class="album-art" />
+      <audio id="mediaplayer">
+        <source src="resources/1.mp3" type="audio/mp3" />
+        <source src="resources/2.mp3" type="audio/mp3" />
+        <source src="resources/3.mp3" type="audio/mp3" />
+        <source src="resources/4.mp3" type="audio/mp3" />
+      </audio>
+      <!-- buttons ال -->
+      <div class="controls">
+          <button class="play">play</button>
+          <input
+            type="range"
+            name="range"
+            min="0"
+            step="0.1"
+            value="0"
+            id="range"
+          />
+        <button class="pause">pause</button>
+        <button class="stop">stop</button>
+
+        <button class="mute">mute</button>
+        <input
+          type="range"
+          name="volume"
+          min="0"
+          step="0.1"
+          max="100"
+          value="100"
+          id="volume"
+        />
+      </div>
+    </div>
+   
+
+    <br />
+    <!--audios ال  -->
+    <div class="song-list">
+      <button id="audio1" class="audio">Super Mario</button>
+      <button id="audio2" class="audio">Lose you to find me</button>
+      <button id="audio3" class="audio">Bad Guy</button>
+      <button id="audio4" class="audio">Mel Bedaya</button>
+    </div>
+    <script>
+
+      var image = document.querySelector("#image");
+      var audio = document.querySelector("#mediaplayer");
+      var range = document.querySelector("#range");
+      var audio1 = document.querySelector("#audio1");
+      var audio2 = document.querySelector("#audio2");
+      var audio3 = document.querySelector("#audio3");
+      var audio4 = document.querySelector("#audio4");
+      var play = document.querySelector(".play");
+      var pause = document.querySelector(".pause");
+      var stopBtn = document.querySelector(".stop");
+      var mute = document.querySelector(".mute");
+      var volumerange = document.querySelector("#volume");
+//onclick مكان ال 
+      // تتحمل هيشتغل audio  لما ملفات ال
+      audio.addEventListener("loadeddata", function () {
+        range.max = audio.duration;
+      });
+    //   بيشغل الصوت
+      play.addEventListener("click", function () {
+        audio.play();
+      });
+    //   بيوقف مؤقتا
+      pause.addEventListener("click", function () {
+        audio.pause();
+      });
+    //   بيكتم الصوت
+      mute.addEventListener("click", function () {
+        audio.muted = !audio.muted;
+      });
+    // browser  رينج الصوت ال انا عملتها بايدي بدل بتاعت ال 
+      range.addEventListener("change", function () {
+        audio.currentTime = range.value;
+      });
+    // audio  عشان الرينج يبقي مساوي لوقت ال 
+      audio.addEventListener("timeupdate", function () {
+        range.value = audio.currentTime;
+      });
+    //   بيوقف الصوت ويعيد من الاول
+      stopBtn.addEventListener("click", function () {
+        audio.currentTime = 0;
+        audio.pause();
+      });
+    //   رينج درجة الصوت
+      volume.addEventListener("input", function () {
+       
+        audio.volume = volume.value;
+      });
+    //   كل ما ادوس علي اسم الاغنية يجبهالي مع الصورة بتاعتها
+      audio1.addEventListener("click", function () {
+        image.src = "resources/1.jpg";
+        audio.src = "resources/1.mp3";
+      });
+      audio2.addEventListener("click", function () {
+      
+        image.src = "resources/2.jpg";
+        audio.src = "resources/2.mp3";
+      });
+      audio3.addEventListener("click", function () {
+        image.src = "resources/3.jpg";
+        audio.src = "resources/3.mp3";
+      });
+      audio4.addEventListener("click", function () {
+        image.src = "resources/4.jpg";
+        audio.src = "resources/4.mp3";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!--inputs ال  -->
+<input type="color" /><br>
+<button>submit</button>
+  
+<!--canvas ال  -->
+<canvas
+width="500px"
+height="300px"
+style="background-color: rgb(221, 229, 229)"
+></canvas>
+<script>
+
+var submit=document.querySelector("button");
+var canvas = document.querySelector("canvas");
+const canvd = canvas.getContext("2d");
+
+//onclick مكان ال 
+submit.addEventListener("click", function () {
+  // باخد قيمة اللون
+        var color = document.querySelector("input").value;
+        // من اي دواير عشان كل مرة يرسم دواير جديدةcanvas  بمسح ال 
+      canvd.clearRect(0,0,canvas.width,canvas.height);
+     // for loop  عشان يرسم دواير كتير 
+for(var i=0;i<Math.floor(Math.random()*canvas.width); i++){
+// عشان يفصل بين الدايرة والتانية
+canvd.beginPath();
+// بحدد ابعاد الدايرة عشان ارسمها
+canvd.arc( Math.random()*(canvas.width),  Math.random()*(canvas.height), 20, 0, Math.PI * 2);
+// input لون الدواير علي حسب ما اختار في ال 
+canvd.strokeStyle=color;
+// برسم الدواير
+canvd.stroke();
+}
+
+});
+
+
+
+</script>
+</body>
+</html>
